@@ -1,0 +1,31 @@
+p.verso {
+  color: blue;
+}
+
+p.mote {
+  color: red;
+  font-weight: bold;
+}
+
+a.link-poeta {
+  color: green;
+  text-decoration: none;
+}
+
+a.link-poeta:hover {
+  color: orange;
+  text-decoration: underline;
+}
+
+a.link-poeta:visited {
+  color: purple;
+}
+
+.poeta img {
+  border-radius: 50%;
+}
+
+th {
+  background-color: lightgray;
+  padding: 8px;
+}
