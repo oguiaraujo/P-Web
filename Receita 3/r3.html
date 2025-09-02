@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>   
+
+   <head>
+      <meta charset="UTF-8">      
+      <style>
+         #resultado {
+            opacity: 0;
+            transition: opacity 1s ease;
+         }
+
+         #resultado.visivel {
+            opacity: 1;
+         }
+      </style>
+   </head>
+
+   <body>
+
+      <div id="botoes">
+         <button id="botaoCarregar">Mostrar / Esconder</button>
+      </div>  
+
+      <div id="resultado"></div>           
+
+   </body>   
+
+   <script>
+      let botao = document.getElementById("botaoCarregar");
+      let resultado = document.getElementById("resultado");
+      let visivel = false;
+
+      function carregarDiv(){
+         if(!visivel){
+            resultado.innerHTML = "<h1>Guinness</h1>";
+            resultado.classList.add("visivel");
+            visivel = true;
+         } else {
+            resultado.classList.remove("visivel");
+            setTimeout(() => {
+               resultado.innerHTML = "";
+               visivel = false;
+            }, 1000);
+         }
+      }
+
+      botao.addEventListener("click", carregarDiv);
+   </script>
+
+</html>
