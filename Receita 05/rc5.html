@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>   
+
+   <head>
+
+      <meta charset="UTF-8">      
+
+   </head>
+
+   <body>
+
+      <div>
+        <a href="#" id="linkCarregar">Carregar</a>
+        <a href="#" id="linkOrdenar">Ordenar</a>
+        <a href="#" id="linkEmbaralhar">Embaralhar</a>
+      </div>
+
+      <div id="meu amor"></div>            
+
+   </body>   
+
+   <script>
+
+      let jogos = ["CS 2", "LoL", "Hollow Knight"]
+
+      const carregarDiv = (games) => {
+        const div = document.getElementById("meu amor")
+        const cervejasHtml = games.map( item => `<h1>${item}</h1>` ) 
+        div.innerHTML = `${cervejasHtml.join("\n")}`
+      }
+
+      const ordenar = () => {
+        let ordenados = [...jogos].sort()
+        carregarDiv(ordenados)
+      }
+
+      const embaralhar = () => {
+        let baguncados = [...jogos].sort(() => Math.random() - 0.5)
+        carregarDiv(baguncados)
+      }
+
+      document.getElementById("linkCarregar").addEventListener("click", () => carregarDiv(jogos))
+      document.getElementById("linkOrdenar").addEventListener("click", ordenar)
+      document.getElementById("linkEmbaralhar").addEventListener("click", embaralhar)
+
+
+   </script>
+
+</html>
