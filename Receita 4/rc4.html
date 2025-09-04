@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>   
+
+   <head>
+      <meta charset="UTF-8">      
+      <style>
+         .cerveja {
+            padding: 8px;
+            margin: 4px;
+            border: 1px solid #000000;
+            border-radius: 6px;
+            background-color: #ff0000;
+            font-family: Arial, sans-serif;
+            width: 200px;
+         }
+
+         table {
+            border-collapse: collapse;
+            margin-top: 10px;
+            width: 250px;
+         }
+
+         th, td {
+            border: 1px solid #ff00dd;
+            padding: 8px;
+            text-align: center;
+         }
+
+         th {
+            background-color: #ffe600;
+            color: white;
+         }
+      </style>
+   </head>
+
+   <body>
+
+      <div id="meu amor"></div>            
+
+      <button id="botaoCarregar">Carregar cervejas (Divs)</button>
+      <button id="botaoOrdenar">Mostrar cervejas ordenadas (Tabela)</button>
+      <button id="botaoEmbaralhar">Embaralhar cervejas (Tabela)</button>
+
+   </body>   
+
+   <script>
+      let cervejas = ["Guiness", "Desperados", "Becks"];
+
+      function transformarDiv(item){
+         return `<div class="cerveja">${item}</div>`;
+      }
+
+      function transformarTabela(lista){
+         let linhas = lista.map(item => `<tr><td>${item}</td></tr>`).join("\n");
+         return `<table>
+                    <tr><th>Cervejas</th></tr>
+                    ${linhas}
+                 </table>`;
+      }
+
+      function carregarDiv(){
+         let div = document.getElementById("meu amor");
+         let cervejasHtml = cervejas.map(transformarDiv);
+         div.innerHTML = cervejasHtml.join("\n");
+      }
+
+      function ordenarCervejas(){
+         let div = document.getElementById("meu amor");
+         let ordenadas = [...cervejas].sort();
+         div.innerHTML = transformarTabela(ordenadas);
+      }
+
+      function embaralharCervejas(){
+         let div = document.getElementById("meu amor");
+         let embaralhadas = [...cervejas].sort(() => Math.random() - 0.5);
+         div.innerHTML = transformarTabela(embaralhadas);
+      }
+
+      document.getElementById("botaoCarregar").addEventListener("click", carregarDiv);
+      document.getElementById("botaoOrdenar").addEventListener("click", ordenarCervejas);
+      document.getElementById("botaoEmbaralhar").addEventListener("click", embaralharCervejas);
+   </script>
+
+</html>
