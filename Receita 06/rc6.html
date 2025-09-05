@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>   
+  <head>
+    <meta charset="UTF-8">
+
+    <style>
+      table.tabela-cervejas {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 560px;
+        font-family: Arial, sans-serif;
+        margin-top: 10px;
+      }
+      table.tabela-cervejas th, table.tabela-cervejas td {
+        border: 1px solid #000000;
+        padding: 8px;
+        text-align: left;
+      }
+      table.tabela-cervejas th {
+        background: #ff9d00;
+        color: #fff;
+      }
+    </style>
+    
+  </head>
+
+  <body>
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+    <div id="DivdasCervejas"></div>
+  </body>
+
+  <script>
+    let cervejas = [
+  { name: "Guiness",     alcohol: "10%", style: "Imperial Stout", ibu: "60" },
+  { name: "Desperados",  alcohol: "6%",  style: "Lager",          ibu: "20" },
+  { name: "Becks",       alcohol: "5%",  style: "Pilsen",         ibu: "24" },
+  { name: "Heineken",    alcohol: "5%",  style: "Lager",          ibu: "19" },
+  { name: "Corona",      alcohol: "4.6%",style: "Pale Lager",     ibu: "18" },
+  { name: "Budweiser",   alcohol: "5%",  style: "American Lager", ibu: "12" },
+  { name: "Stella Artois",alcohol:"5%",  style: "Pale Lager",     ibu: "24" },
+  { name: "Hoegaarden",  alcohol: "4.9%",style: "Witbier",        ibu: "15" },
+  { name: "Chimay Blue", alcohol: "9%",  style: "Belgian Strong Ale", ibu: "35" },
+  { name: "Leffe Blonde",alcohol: "6.6%",style: "Belgian Ale",    ibu: "20" },
+  { name: "Sierra Nevada Pale Ale", alcohol: "5.6%", style: "APA", ibu: "38" },
+  { name: "Brooklyn IPA", alcohol: "6.9%", style: "English IPA",  ibu: "47" },
+  { name: "Skol",        alcohol: "4.5%",style: "Pilsen",         ibu: "13" }
+];
+
+
+    const buildTableHTML = (data, cabecalho, conteudo) => {
+      const thead = `<thead><tr>${cabecalho.map(h => `<th>${h}</th>`).join("")}</tr></thead>`;
+      const tbody = `<tbody>${
+        data.map(item => 
+          `<tr>${conteudo.map(p => `<td>${(item && item[p] !== undefined) ? item[p] : ""}</td>`).join("")}</tr>`
+        ).join("")
+      }</tbody>`;
+      return `<table class="tabela-cervejas">${thead}${tbody}</table>`;
+    };
+
+    const carregarDiv = (
+      cvjs, 
+      idLocalExibir = "DivdasCervejas", 
+      cabecalho = ["Nome", "Álcool", "Estilo", "Amargor"], 
+      conteudo = ["name", "alcohol", "style", "ibu"]
+    ) => {
+      const div = document.getElementById(idLocalExibir);
+      div.innerHTML = buildTableHTML(cvjs, cabecalho, conteudo);
+    };
+
+    const botao = document.getElementById("botaoCarregar");
+    botao.addEventListener("click", () => carregarDiv(cervejas));
+  </script>
+</html>
