@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>   
+<head>
+  <meta charset="UTF-8">      
+  <title>Catálogo</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="tabela.js"></script>
+</head>
+
+<body>
+  <h1>Cervejas</h1>
+
+  <div>
+    <button id="botaoCervejas">Carregar cervejas</button>
+    <button id="botaoOutros">Carregar outros itens</button>
+  </div>
+
+  <div id="dadosDiv"></div>            
+
+  <script>
+    let cervejas = []
+    let cocktails = []
+
+    const carregarAPI = async (url, divId, colunas) => {
+      try {
+        let res = await fetch(url)
+        let dados = await res.json()
+        montarTabela(dados, divId, colunas)
+      } catch (err) {
+        document.getElementById(divId).innerHTML = "Erro ao acessar a API"
+      }
+    }
+
+    document.getElementById("botaoCervejas")
+      .addEventListener("click", () => carregarAPI("https://api.sampleapis.com/beers/ale", "dadosDiv", ["id", "name", "price"]))
+
+    document.getElementById("botaoOutros")
+      .addEventListener("click", () => carregarAPI("https://api.sampleapis.com/coffee/hot", "dadosDiv", ["id", "title", "description", "ingredients"]))
+  </script>
+</body>   
+</html>
