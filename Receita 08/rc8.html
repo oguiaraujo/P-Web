@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>   
+<head>
+  <meta charset="UTF-8">      
+  <title>Exemplo Promise com Tabelas</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="tabela.js"></script>
+</head>
+
+<body>
+  <h1>Cervejas</h1>
+
+  <div class="botoes">
+    <button id="botaoCervejas">Carregar Cervejas</button>
+    <button id="botaoCafe">Carregar Cafés</button>
+  </div>
+
+  <div id="dadosDiv"></div>            
+
+  <script>
+    const carregarAPI = (url, divId, colunas) => {
+      document.getElementById(divId).innerHTML = "<p>Carregando...</p>"
+
+      fetch(url)
+        .then(res => res.json())
+        .then(json => montarTabela(json, divId, colunas))
+        .catch(err => {
+          document.getElementById(divId).innerHTML = `<p style="color:red">Erro: ${err}</p>`
+        })
+    }
+
+    document.getElementById("botaoCervejas")
+      .addEventListener("click", () => {
+        carregarAPI("https://api.sampleapis.com/beers/ale", "dadosDiv", ["name", "price"])
+      })
+
+    document.getElementById("botaoCafe")
+      .addEventListener("click", () => {
+        carregarAPI("https://api.sampleapis.com/coffee/hot", "dadosDiv", ["title", "description", "ingredients"])
+      })
+  </script>
+</body>   
+</html>
