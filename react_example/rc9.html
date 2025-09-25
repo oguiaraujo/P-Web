@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ReactZero</title>      
+      <meta charset="utf-8" />
+   </head>
+
+   <body>
+      <div id="app"></div>
+
+      <script src="libs/react.js"></script>
+      <script src="libs/react-dom.js"></script>
+
+      <script>
+        ReactDOM.render(
+          React.createElement(
+            'table',
+            { border: 1 },
+            React.createElement(
+              'thead',
+              null,
+              React.createElement(
+                'tr',
+                null,
+                React.createElement('th', null, 'Nome'),
+                React.createElement('th', null, 'Álcool')
+              )
+            ),
+            React.createElement(
+              'tbody',
+              null,
+              React.createElement(
+                'tr',
+                null,
+                React.createElement('td', null, 'Guinness'),
+                React.createElement('td', null, '50%')
+              ),
+              React.createElement(
+                'tr',
+                null,
+                React.createElement('td', null, 'Desperados'),
+                React.createElement('td', null, '60%')
+              )
+            )
+          ),
+          document.getElementById('app')
+        );
+      </script>
+   </body>
+</html>
