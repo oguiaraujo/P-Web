@@ -1,0 +1,24 @@
+{
+  "name": "p-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oguiaraujo/P-Web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oguiaraujo/P-Web/issues"
+  },
+  "homepage": "https://github.com/oguiaraujo/P-Web#readme",
+  "dependencies": {
+    "next": "^15.5.4"
+  }
+}
