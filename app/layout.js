@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import MovieForm from "./movieSearch/page";
+import '../app/globals.css'
 
 export const metadata = {
   title: 'Next.js',
@@ -11,7 +11,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <MovieForm/>
         {children}
         <div>
           <h2>Esta página tem dedo do layout principal</h2>
