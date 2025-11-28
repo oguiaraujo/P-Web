@@ -12,10 +12,10 @@ export default function Home(){
     setLoading(true)
   
     const titleSearchKey = formData.get("titleSearchKey")
-    const httpRes = await fetch(`http://www.omdbapi.com/?apikey=f1cbc41e&s=${titleSearchKey}`)
+    const httpRes = await fetch(`/api/myAPI?title=${titleSearchKey}`)
     const jsonRes = await httpRes.json()
   
-    setResultMovies(jsonRes.Search || [])
+    setResultMovies(jsonRes)
     setLoading(false)
   }, [])
 
@@ -59,7 +59,7 @@ export function MovieTable({movies}){
             <div className="flex flex-col gap-4 bg-white p-4">
                     {movies.map( (m) => (
                         <div key={m.imdbID}>
-                            <span className="font-bold">{m.Title}</span> --- {m.Year}
+                            <span className="font-bold">{m.titulo}</span> --- {m.ano}
                         </div>))}               
             </div>
         </div>
